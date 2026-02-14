@@ -52,12 +52,16 @@ function initQuoteForm() {
         e.preventDefault();
         var nameEl = document.getElementById("quote-name");
         var phoneEl = document.getElementById("quote-phone");
+        var vehicleEl = document.getElementById("quote-vehicle");
+        var typeEl = document.getElementById("quote-complaint-type");
         var complaintEl = document.getElementById("quote-complaint");
         var name = (nameEl && nameEl.value) ? String(nameEl.value).trim() : "";
         var phone = (phoneEl && phoneEl.value) ? String(phoneEl.value).trim() : "";
+        var vehicle = (vehicleEl && vehicleEl.value) ? String(vehicleEl.value).trim() : "";
+        var typeText = (typeEl && typeEl.selectedIndex >= 0 && typeEl.options[typeEl.selectedIndex]) ? String(typeEl.options[typeEl.selectedIndex].text).trim() : "";
         var complaint = (complaintEl && complaintEl.value) ? String(complaintEl.value).trim() : "";
         var subject = "Web Sitesi - Fiyat Teklifi Talebi";
-        var body = "İsim Soyisim: " + name + "\nTelefon: " + phone + "\nAraç Modeli / Şikayet: " + complaint;
+        var body = "İsim Soyisim: " + name + "\nTelefon: " + phone + "\nAraç Bilgisi: " + vehicle + "\nŞikayet / Konu: " + typeText + "\nDetay: " + complaint;
         var mailto = "mailto:osmanfaruk21@gmail.com?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
         window.location.href = mailto;
     });
