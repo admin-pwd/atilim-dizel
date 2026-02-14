@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+    <title>İletişim | Atılım Dizel</title>
+    <meta name="description" content="Atılım Dizel iletişim bilgileri, adres, telefon, çalışma saatleri ve iletişim formu." />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js" defer></script>
+    <script src="js/script.js" defer></script>
+</head>
+<body>
+    <a class="skip-link" href="#main-content">İçeriğe geç</a>
+
+    <header class="header header-solid" id="site-header">
+        <div class="container header-content">
+            <a href="index.html" class="logo" id="logo-link">
+                <div class="logo-icon logo-icon-solid">
+                    <svg class="icon spin-slow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="2.5"/><path d="M12 12v-10M12 12v10M12 12H2M12 12h10M12 12l-6.36-6.36M12 12l6.36 6.36M12 12l-6.36 6.36M12 12l6.36-6.36"/></svg>
+                </div>
+                <span class="logo-text logo-text--two-tone"><span class="logo-part logo-part--atilim">ATILIM</span> <span class="logo-part logo-part--dizel">DİZEL</span></span>
+            </a>
+
+            <nav class="nav-desktop nav-desktop-solid" aria-label="Ana menü">
+                <a href="index.html" class="nav-link">Anasayfa</a>
+                <a href="index.html#hakkimizda" class="nav-link">Hakkımızda</a>
+                <a href="hizmetler.html" class="nav-link">Hizmetler</a>
+                <a href="index.html#sss" class="nav-link">SSS</a>
+                <a href="iletisim.html" class="nav-link nav-link-active">İletişim</a>
+                <a href="tel:02826733020" class="phone-cta" id="header-phone">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    <span id="header-phone-text"></span>
+                </a>
+            </nav>
+
+            <button type="button" class="mobile-menu-btn text-white" aria-label="Menüyü aç/kapat" aria-expanded="false" aria-controls="mobile-menu" id="mobile-menu-btn">
+                <svg class="icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+            </button>
+        </div>
+
+        <div id="mobile-menu" class="mobile-menu" hidden>
+            <a href="index.html" class="mobile-menu-link">Anasayfa</a>
+            <a href="index.html#hakkimizda" class="mobile-menu-link">Hakkımızda</a>
+            <a href="hizmetler.html" class="mobile-menu-link">Hizmetler</a>
+            <a href="index.html#sss" class="mobile-menu-link">SSS</a>
+            <a href="iletisim.html" class="mobile-menu-link mobile-menu-link-active">İletişim</a>
+            <div class="mobile-menu-actions">
+                <a href="tel:" class="mobile-menu-phone" id="mobile-phone-link">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    <span>Hemen Ara: <span id="mobile-phone-text"></span></span>
+                </a>
+                <p class="mobile-menu-location" id="mobile-location"></p>
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content" class="cp-main">
+        <header class="cp-hero">
+            <div class="container cp-hero-inner">
+                <p class="cp-hero-label">İletişim</p>
+                <h1 class="cp-hero-title">Bize Ulaşın</h1>
+                <p class="cp-hero-desc">Randevu, teknik destek veya sorularınız için bizi arayın, yazın veya yanımıza uğrayın.</p>
+            </div>
+        </header>
+
+        <section class="cp-actions" aria-label="Hızlı iletişim">
+            <div class="container">
+                <div class="cp-actions-grid">
+                    <a href="tel:" class="cp-action-card cp-action-phone" id="contact-cta-phone">
+                        <span class="cp-action-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+                        <span class="cp-action-label">Hemen Ara</span>
+                        <span class="cp-action-value" id="contact-phone-display"></span>
+                    </a>
+                    <a href="https://wa.me/905000000000?text=Merhaba,%20randevu%20almak%20istiyorum." target="_blank" rel="noopener noreferrer" class="cp-action-card cp-action-whatsapp whatsapp-button">
+                        <span class="cp-action-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></span>
+                        <span class="cp-action-label">WhatsApp</span>
+                        <span class="cp-action-value">Mesaj gönder</span>
+                    </a>
+                    <a href="https://www.google.com/maps?q=41.14724384144144,27.839888293549183" target="_blank" rel="noopener noreferrer" class="cp-action-card cp-action-map" id="hero-map-btn">
+                        <span class="cp-action-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+                        <span class="cp-action-label">Yol Tarifi</span>
+                        <span class="cp-action-value">Konumu aç</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="cp-map-section" aria-label="Konum">
+            <div class="cp-map-wrapper">
+                <div id="hero-map-container" class="cp-map-inner">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d24265.795!2d27.839888293549183!3d41.14724384144144!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14b4b7e0c2e8f8f%3A0x0!2zQ8O2cmx1!5e0!3m2!1str!2str!4v1" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Atılım Dizel konum"></iframe>
+                </div>
+            </div>
+        </section>
+
+        <section class="cp-content">
+            <div class="container">
+                <div class="cp-grid">
+                    <aside class="cp-info">
+                        <h2 class="cp-info-heading">İletişim Bilgileri</h2>
+                        <ul class="cp-info-list">
+                            <li class="cp-info-item">
+                                <span class="cp-info-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+                                <div class="cp-info-text">
+                                    <span class="cp-info-label">ADRES</span>
+                                    <span class="cp-info-value" id="contact-address"></span>
+                                </div>
+                            </li>
+                            <li class="cp-info-item">
+                                <span class="cp-info-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+                                <div class="cp-info-text">
+                                    <span class="cp-info-label">TELEFON</span>
+                                    <a href="tel:" class="cp-info-value cp-info-link" id="contact-phone"></a>
+                                </div>
+                            </li>
+                            <li class="cp-info-item">
+                                <span class="cp-info-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span>
+                                <div class="cp-info-text">
+                                    <span class="cp-info-label">E-POSTA</span>
+                                    <a href="mailto:" class="cp-info-value cp-info-link" id="contact-email"></a>
+                                </div>
+                            </li>
+                            <li class="cp-info-item">
+                                <span class="cp-info-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span>
+                                <div class="cp-info-text">
+                                    <span class="cp-info-label">ÇALIŞMA SAATLERİ</span>
+                                    <span class="cp-info-value cp-info-hours">
+                                        <span id="work-hours-weekday"></span> Hafta İçi<br>
+                                        <span id="work-hours-saturday"></span> Cumartesi<br>
+                                        <span id="work-hours-sunday"></span> Pazar
+                                    </span>
+                                </div>
+                            </li>
+                        </ul>
+                    </aside>
+
+                    <div class="cp-form-wrap">
+                        <div class="cp-form-card">
+                            <h3 class="cp-form-title">Mesaj Gönderin</h3>
+                            <p class="cp-form-desc">Formu doldurun, en kısa sürede size dönüş yapalım.</p>
+                            <form id="contact-form" class="cp-form" novalidate>
+                                <div class="cp-form-row">
+                                    <div class="cp-form-field">
+                                        <label class="cp-form-label" for="contact-name">Ad Soyad</label>
+                                        <input type="text" id="contact-name" name="name" class="cp-form-input" placeholder="Adınız Soyadınız" required>
+                                    </div>
+                                    <div class="cp-form-field">
+                                        <label class="cp-form-label" for="contact-phone-input">Telefon</label>
+                                        <input type="tel" id="contact-phone-input" name="phone" class="cp-form-input" placeholder="05XXXXXXXXX">
+                                    </div>
+                                </div>
+                                <div class="cp-form-field">
+                                    <label class="cp-form-label" for="contact-email-input">E-posta</label>
+                                    <input type="email" id="contact-email-input" name="email" class="cp-form-input" placeholder="ornek@email.com">
+                                </div>
+                                <div class="cp-form-field">
+                                    <label class="cp-form-label" for="contact-message">Mesajınız</label>
+                                    <textarea id="contact-message" name="message" class="cp-form-textarea" placeholder="Mesajınızı buraya yazın..." rows="4" required></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary cp-form-submit">Gönder</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer-section">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">
+                        <svg class="footer-brand-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2.5"/><path d="M12 12v-10M12 12v10M12 12H2M12 12h10M12 12l-6.36-6.36M12 12l6.36 6.36M12 12l-6.36 6.36M12 12l6.36-6.36"/></svg>
+                        <span class="footer-brand-text">ATILIM <span class="footer-brand-highlight">DİZEL</span></span>
+                    </div>
+                    <p class="footer-desc">30 yılı aşkın tecrübemizle, dizel yakıt sistemleri revizyonunda Trakya'nın güvenilir çözüm ortağıyız.</p>
+                </div>
+                <div>
+                    <h4 class="footer-heading">İletişim</h4>
+                    <ul class="footer-contact-list">
+                        <li class="footer-contact-item">
+                            <svg class="footer-icon-marker" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            <span id="footer-address"></span>
+                        </li>
+                        <li class="footer-contact-item">
+                            <svg class="footer-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                            <a href="tel:" id="footer-phone" class="footer-link"></a>
+                        </li>
+                        <li class="footer-contact-item">
+                            <svg class="footer-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                            <a href="mailto:" id="footer-email" class="footer-link"></a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-heading">Çalışma Saatleri</h4>
+                    <div class="footer-hours-table">
+                        <div class="footer-hour-row">
+                            <span class="footer-hour-label">Hafta İçi</span>
+                            <span class="footer-hour-value" id="footer-hours-weekday"></span>
+                        </div>
+                        <div class="footer-hour-row">
+                            <span class="footer-hour-label">Cumartesi</span>
+                            <span class="footer-hour-value" id="footer-hours-saturday"></span>
+                        </div>
+                        <div class="footer-hour-row">
+                            <span class="footer-hour-label">Pazar</span>
+                            <span class="footer-hour-value" id="footer-hours-sunday"></span>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="footer-heading">Hızlı Erişim</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html" class="footer-link">Anasayfa</a></li>
+                        <li><a href="index.html#hakkimizda" class="footer-link">Hakkımızda</a></li>
+                        <li><a href="hizmetler.html" class="footer-link">Hizmetler</a></li>
+                        <li><a href="iletisim.html" class="footer-link">İletişim</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span id="current-year"></span> <span id="footer-copyright-name"></span> Pompa Enjektör Servisi. Tüm hakları saklıdır.</p>
+            </div>
+        </div>
+    </footer>
+
+    <a class="whatsapp-float" href="https://wa.me/905000000000?text=Merhaba,%20randevu%20almak%20istiyorum." target="_blank" rel="noopener noreferrer" aria-label="WhatsApp ile mesaj gönder">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        <span class="whatsapp-text">WhatsApp</span>
+    </a>
+
+</body>
+</html>

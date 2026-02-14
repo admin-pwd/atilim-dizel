@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+    <title>Atılım Dizel</title>
+    <meta name="description" content="Enjektör ve pompa revizyonunda dünya standartlarında çözüm ortağınız. Trakya'nın güvenilir dizel servisi." />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js" defer></script>
+    <script src="js/script.js" defer></script>
+</head>
+<body>
+    <a class="skip-link" href="#main-content">İçeriğe geç</a>
+
+    <!-- Header - atilim-dizel stili -->
+    <header class="header header-transparent" id="site-header">
+        <div class="container header-content">
+            <a href="index.html" class="logo" id="logo-link">
+                <div class="logo-icon logo-icon-transparent">
+                    <svg class="icon spin-slow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="2.5"/><path d="M12 12v-10M12 12v10M12 12H2M12 12h10M12 12l-6.36-6.36M12 12l6.36 6.36M12 12l-6.36 6.36M12 12l6.36-6.36"/></svg>
+                </div>
+                <span class="logo-text logo-text--two-tone"><span class="logo-part logo-part--atilim">ATILIM</span> <span class="logo-part logo-part--dizel">DİZEL</span></span>
+            </a>
+
+            <nav class="nav-desktop nav-desktop-transparent" aria-label="Ana menü">
+                <a href="index.html" class="nav-link nav-link-active">Anasayfa</a>
+                <a href="index.html#hakkimizda" class="nav-link">Hakkımızda</a>
+                <a href="hizmetler.html" class="nav-link">Hizmetler</a>
+                <a href="index.html#sss" class="nav-link">SSS</a>
+                <a href="iletisim.html" class="nav-link">İletişim</a>
+                <a href="tel:" class="phone-cta" id="header-phone">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    <span id="header-phone-text"></span>
+                </a>
+            </nav>
+
+            <button type="button" class="mobile-menu-btn text-white" aria-label="Menüyü aç/kapat" aria-expanded="false" aria-controls="mobile-menu" id="mobile-menu-btn">
+                <svg class="icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+            </button>
+        </div>
+
+        <div id="mobile-menu" class="mobile-menu" hidden>
+            <a href="index.html" class="mobile-menu-link">Anasayfa</a>
+            <a href="index.html#hakkimizda" class="mobile-menu-link">Hakkımızda</a>
+            <a href="hizmetler.html" class="mobile-menu-link">Hizmetler</a>
+            <a href="index.html#sss" class="mobile-menu-link">SSS</a>
+            <a href="iletisim.html" class="mobile-menu-link">İletişim</a>
+            <div class="mobile-menu-actions">
+                <a href="tel:" class="mobile-menu-phone" id="mobile-phone-link">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    <span>Hemen Ara: <span id="mobile-phone-text"></span></span>
+                </a>
+                <p class="mobile-menu-location" id="mobile-location"></p>
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <!-- Hero -->
+        <section class="hero-section">
+            <div class="hero-bg-wrapper">
+                <img src="https://images.unsplash.com/photo-1530046339160-ce3e530c7d2f?auto=format&fit=crop&q=80&w=2000" alt="Atılım Dizel Servis Alanı" class="hero-bg-img" />
+            </div>
+            <div class="container hero-content">
+                <div class="hero-inner">
+                    <span class="hero-badge">TRAKYA'NIN GÜVENİLİR DİZEL SERVİSİ</span>
+                    <h1 class="hero-heading hero-title" id="hero-title"></h1>
+                    <p class="hero-desc hero-text" id="hero-subtext"></p>
+                    <div class="hero-actions hero-buttons">
+                        <a href="tel:" class="btn btn-primary" id="hero-phone-btn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                            <span id="hero-phone-text"></span>
+                        </a>
+                        <a href="https://www.google.com/maps?q=41.14724384144144,27.839888293549183" target="_blank" rel="noopener noreferrer" class="btn btn-outline" id="hero-map-btn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            <span>Yol Tarifi Al</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Partner markalar (açık bölüm) -->
+        <section class="partners-section section section-bg-light" aria-label="Partner markalar">
+            <div class="container">
+                <div class="partners-logos">
+                    <span class="partner-logo partner-logo-bosch" aria-hidden="true">BOSCH</span>
+                    <span class="partner-logo partner-logo-delphi" aria-hidden="true">Delphi</span>
+                    <span class="partner-logo partner-logo-denso" aria-hidden="true">DENSO</span>
+                    <span class="partner-logo partner-logo-siemens" aria-hidden="true">VDO</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Metrikler (kurumsal kartlar) -->
+        <section class="metrics-section section section-bg-dark" aria-label="Rakamlarla biz">
+            <div class="container">
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-icon-wrap" aria-hidden="true">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                        </div>
+                        <p class="metric-value">15.000+</p>
+                        <p class="metric-label">MUTLU MÜŞTERİ</p>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-icon-wrap" aria-hidden="true">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        </div>
+                        <p class="metric-value">4.8 <span class="metric-star">★</span></p>
+                        <p class="metric-label">GOOGLE PUANI (<span id="metric-google-count">71+</span> YORUM)</p>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-icon-wrap" aria-hidden="true">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                        </div>
+                        <p class="metric-value">36+</p>
+                        <p class="metric-label">YILLIK TECRÜBE</p>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-icon-wrap" aria-hidden="true">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                        </div>
+                        <p class="metric-value">12 Ay</p>
+                        <p class="metric-label">TAM KAPSAMLI GARANTİ</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Öne Çıkanlar -->
+        <section id="hakkimizda" class="about-section section section-bg-dark highlights-section" aria-label="Öne çıkanlar">
+            <div class="container">
+                <div class="highlights-grid">
+                    <div class="highlights-stats">
+                        <div class="highlight-stat-card">
+                            <span class="highlight-stat-number">30+</span>
+                            <h4 class="highlight-stat-title">Yıllık Tecrübe</h4>
+                            <p class="highlight-stat-desc">Sektörde güvenilirlik</p>
+                        </div>
+                        <div class="highlight-stat-card">
+                            <span class="highlight-stat-number">10K+</span>
+                            <h4 class="highlight-stat-title">Tamir Edilen Parça</h4>
+                            <p class="highlight-stat-desc">Pompa & Enjektör</p>
+                        </div>
+                        <div class="highlight-stat-card">
+                            <span class="highlight-stat-number">%98</span>
+                            <h4 class="highlight-stat-title">Müşteri Memnuniyeti</h4>
+                            <p class="highlight-stat-desc">Google Yorumları</p>
+                        </div>
+                        <div class="highlight-stat-card">
+                            <span class="highlight-stat-number">7/24</span>
+                            <h4 class="highlight-stat-title">Destek Hattı</h4>
+                            <p class="highlight-stat-desc">Acil durumlar için</p>
+                        </div>
+                    </div>
+                    <div class="highlights-content">
+                        <span class="highlights-label">KURUMSAL</span>
+                        <h2 class="highlights-title" id="about-title">Motorunuzun Kalbine Profesyonel Dokunuş</h2>
+                        <p class="highlights-desc" id="about-text">Aracınızın yakıt sistemi, performansın ve ekonominin anahtarıdır. Biz, sadece parça değiştiren değil, sorunun köküne inen ve <strong>orijinal</strong> fabrika değerlerinde onarım yapan bir teknoloji üssüyüz.</p>
+                        <ul class="highlights-check-list" aria-label="Kurumsal özellikler">
+                            <li><span class="highlights-check-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></span>Bosch ve Delphi Yetkili Servis Standartları</li>
+                            <li><span class="highlights-check-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></span>TSE 12047 Hizmet Yeterlilik Belgesi</li>
+                            <li><span class="highlights-check-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></span>Son Teknoloji EPS Test Tezgahları</li>
+                        </ul>
+                        <a href="index.html#hakkimizda" class="highlights-cta">Hikayemizi Okuyun <span class="highlights-cta-arrow" aria-hidden="true">→</span></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Process -->
+        <section class="process-section section section-bg-dark">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="section-label">Nasıl Çalışıyoruz?</span>
+                    <h2 class="section-title">4 Adımda Çözüm Süreci</h2>
+                    <p class="section-desc">Şeffaf, hızlı ve profesyonel iş akışımızla aracınız emin ellerde.</p>
+                </div>
+                <div class="process-grid">
+                    <div class="process-card">
+                        <div class="process-icon-box"><svg class="process-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+                        <h3 class="process-title">Arıza Tespit</h3>
+                        <p class="process-desc">Bilgisayarlı diyagnostik cihazlarla nokta atışı arıza tespiti.</p>
+                    </div>
+                    <div class="process-card">
+                        <div class="process-icon-box"><svg class="process-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/></svg></div>
+                        <h3 class="process-title">Sökme, Bakım & Test</h3>
+                        <p class="process-desc">Enjektör ve pompaların sökülerek test tezgahında kontrolü.</p>
+                    </div>
+                    <div class="process-card">
+                        <div class="process-icon-box"><svg class="process-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg></div>
+                        <h3 class="process-title">Revizyon & Onarım</h3>
+                        <p class="process-desc">Orijinal parçalarla onarım ve üretici standartlarında ayar.</p>
+                    </div>
+                    <div class="process-card">
+                        <div class="process-icon-box"><svg class="process-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+                        <h3 class="process-title">Montaj & Kontrol</h3>
+                        <p class="process-desc">Araç üzeri montaj, kodlama ve son yol testi kontrolü.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services (ana sayfa: minimal, tek buton) -->
+        <section id="hizmetler" class="services-section section section-bg-light services-section--minimal">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="section-label">Hizmetlerimiz</span>
+                    <h2 class="section-title">Profesyonel Dizel Çözümleri</h2>
+                </div>
+                <div id="services-grid" class="services-grid services-grid--minimal">
+                    <!-- JS ile minimal kartlar (sadece görsel + başlık) -->
+                </div>
+                <div class="services-cta-wrap">
+                    <a href="hizmetler.html" class="btn-outline-dark">Tüm Hizmetler</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reviews -->
+        <section class="reviews-section section section-bg-dark">
+            <div class="container">
+                <div class="reviews-header section-header text-center">
+                    <span class="section-label">Müşteri Yorumları</span>
+                    <h2 class="section-title">Sizden Gelenler</h2>
+                </div>
+                <div class="reviews-carousel-wrapper">
+                    <button type="button" class="reviews-carousel-btn reviews-carousel-prev" aria-label="Önceki yorumlar">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+                    </button>
+                    <button type="button" class="reviews-carousel-btn reviews-carousel-next" aria-label="Sonraki yorumlar">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+                    </button>
+                    <div id="reviews-track" class="reviews-track">
+                        <div id="reviews-grid" class="reviews-grid">
+                            <!-- JS ile yüklenecek -->
+                        </div>
+                    </div>
+                </div>
+                <div class="reviews-cta-wrap">
+                    <a href="https://www.google.com/maps" target="_blank" rel="noopener noreferrer" class="btn-outline-dark">Google Yorumları</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section id="sss" class="faq-section section section-bg-light">
+            <div class="container faq-container">
+                <div class="section-header text-center">
+                    <span class="section-label">Sıkça Sorulan Sorular</span>
+                    <h2 class="section-title">Aklınıza Takılanlar</h2>
+                    <p class="section-desc">Dizel yakıt sistemleri ve servis süreçlerimizle ilgili merak edilenler.</p>
+                </div>
+                <div id="faq-container" class="faq-list"></div>
+            </div>
+        </section>
+
+        <!-- Ücretsiz Teklif Alın -->
+        <section id="teklif-al" class="quote-section section section-bg-dark">
+            <div class="container">
+                <div class="quote-card">
+                    <div class="quote-card-left">
+                        <h2 class="quote-title">Ücretsiz Teklif Alın</h2>
+                        <p class="quote-desc">Enjektör veya pompa sorununuzu kısaca anlatın, size özel fiyat teklifi hazırlayalım. Aynı gün dönüş garantisi.</p>
+                        <ul class="quote-benefits" aria-label="Avantajlar">
+                            <li class="quote-benefit">
+                                <span class="quote-benefit-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>
+                                <span>%40–60 Daha Ekonomik</span>
+                            </li>
+                            <li class="quote-benefit">
+                                <span class="quote-benefit-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>
+                                <span>Aynı Gün Test & Teslim</span>
+                            </li>
+                            <li class="quote-benefit">
+                                <span class="quote-benefit-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>
+                                <span>12 Ay Garanti</span>
+                            </li>
+                            <li class="quote-benefit">
+                                <span class="quote-benefit-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>
+                                <span>Türkiye Geneli Kargo</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="quote-card-right">
+                        <form id="quote-form" class="quote-form" novalidate>
+                            <div class="form-field">
+                                <label class="form-label" for="quote-name">İsim Soyisim</label>
+                                <input type="text" id="quote-name" name="name" class="form-input" placeholder="Adınız Soyadınız" required>
+                            </div>
+                            <div class="form-field">
+                                <label class="form-label" for="quote-phone">Telefon</label>
+                                <input type="tel" id="quote-phone" name="phone" class="form-input" placeholder="05XX XXX XX XX" required>
+                            </div>
+                            <div class="form-field">
+                                <label class="form-label" for="quote-complaint">Araç Modeli / Şikayet</label>
+                                <textarea id="quote-complaint" name="complaint" class="form-textarea" placeholder="Örn: 2015 VW Passat, siyah duman atıyor" rows="3"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary quote-submit">
+                                <span>Fiyat Teklifi Al</span>
+                                <svg class="quote-submit-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- İletişim CTA (detay için iletişim sayfasına yönlendir) -->
+        <section id="iletisim" class="contact-section contact-cta-section section-bg-dark">
+            <div class="contact-wrap">
+                <header class="contact-header">
+                    <span class="contact-label">İletişim</span>
+                    <h2 class="contact-title">Bize Ulaşın</h2>
+                    <p class="contact-desc">Sorularınız, randevu talepleriniz veya teknik destek için iletişim sayfamızdan bize ulaşabilirsiniz.</p>
+                </header>
+                <div class="contact-cta-single">
+                    <a href="iletisim.html" class="btn btn-primary">İletişim Sayfasına Git</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer-section">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">
+                        <svg class="footer-brand-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2.5"/><path d="M12 12v-10M12 12v10M12 12H2M12 12h10M12 12l-6.36-6.36M12 12l6.36 6.36M12 12l-6.36 6.36M12 12l6.36-6.36"/></svg>
+                        <span class="footer-brand-text">ATILIM <span class="footer-brand-highlight">DİZEL</span></span>
+                    </div>
+                    <p class="footer-desc">30 yılı aşkın tecrübemizle, dizel yakıt sistemleri revizyonunda Trakya'nın güvenilir çözüm ortağıyız.</p>
+                </div>
+                <div>
+                    <h4 class="footer-heading">İletişim</h4>
+                    <ul class="footer-contact-list">
+                        <li class="footer-contact-item">
+                            <svg class="footer-icon-marker" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            <span id="footer-address"></span>
+                        </li>
+                        <li class="footer-contact-item">
+                            <svg class="footer-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                            <a href="tel:" id="footer-phone" class="footer-link"></a>
+                        </li>
+                        <li class="footer-contact-item">
+                            <svg class="footer-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                            <a href="mailto:" id="footer-email" class="footer-link"></a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-heading">Çalışma Saatleri</h4>
+                    <div class="footer-hours-table">
+                        <div class="footer-hour-row">
+                            <span class="footer-hour-label">Hafta İçi</span>
+                            <span class="footer-hour-value" id="footer-hours-weekday"></span>
+                        </div>
+                        <div class="footer-hour-row">
+                            <span class="footer-hour-label">Cumartesi</span>
+                            <span class="footer-hour-value" id="footer-hours-saturday"></span>
+                        </div>
+                        <div class="footer-hour-row">
+                            <span class="footer-hour-label">Pazar</span>
+                            <span class="footer-hour-value" id="footer-hours-sunday"></span>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="footer-heading">Hızlı Erişim</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html" class="footer-link">Anasayfa</a></li>
+                        <li><a href="index.html#hakkimizda" class="footer-link">Hakkımızda</a></li>
+                        <li><a href="hizmetler.html" class="footer-link">Hizmetler</a></li>
+                        <li><a href="iletisim.html" class="footer-link">İletişim</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span id="current-year"></span> <span id="footer-copyright-name"></span> Pompa Enjektör Servisi. Tüm hakları saklıdır.</p>
+            </div>
+        </div>
+    </footer>
+
+    <a class="whatsapp-float" href="https://wa.me/905000000000?text=Merhaba,%20randevu%20almak%20istiyorum." target="_blank" rel="noopener noreferrer" aria-label="WhatsApp ile mesaj gönder">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        <span class="whatsapp-text">WhatsApp</span>
+    </a>
+
+</body>
+</html>
