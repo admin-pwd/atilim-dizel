@@ -174,69 +174,57 @@
             </div>
         </section>
 
-        <!-- Process: Adım Adım Onarım Süreci (timeline) -->
-        <section class="process-section section section-bg-dark">
+        <!-- Process: Adım Adım Onarım Süreci (sol metin + sağ 2x2 step kartları) -->
+        <section class="process-section section">
             <div class="container">
                 <div class="process-wrap">
                     <div class="process-left">
-                        <span class="process-label">ÇALIŞMA SİSTEMİ</span>
-                        <h2 class="process-heading">Adım Adım Onarım Süreci</h2>
+                        <h2 class="process-label">ÇALIŞMA SİSTEMİ</h2>
+                        <h3 class="process-heading">Adım Adım Onarım Süreci</h3>
                         <p class="process-desc-main">Servisimize gelen her parça ve araç, standart bir kalite kontrol sürecinden geçer. Sürpriz maliyetler ve gereksiz değişimler yaşamazsınız.</p>
                         <a href="index.html#iletisim" class="process-cta-btn">Süreci Başlat</a>
                     </div>
-                    <div class="process-timeline">
-                        <div class="process-timeline-line" aria-hidden="true"></div>
+                    <div class="process-right">
                         <div class="process-steps-grid">
-                        <div class="process-step process-step--left">
-                            <span class="process-step-dot" aria-hidden="true"></span>
-                            <span class="process-step-num" aria-hidden="true">01</span>
-                            <div class="process-step-content">
-                                <h3 class="process-step-title">Kabul ve Ön Test</h3>
+                            <div class="process-step-card">
+                                <span class="process-step-num" aria-hidden="true">01</span>
+                                <h4 class="process-step-title">Kabul ve Ön Test</h4>
                                 <p class="process-step-desc">Aracınız veya parçanız teslim alınır, şikayetiniz dinlenir ve cihazla ilk arıza tespit verileri alınır.</p>
                             </div>
-                        </div>
-                        <div class="process-step process-step--right">
-                            <span class="process-step-dot" aria-hidden="true"></span>
-                            <span class="process-step-num" aria-hidden="true">02</span>
-                            <div class="process-step-content">
-                                <h3 class="process-step-title">Ekspertiz ve Onay</h3>
+                            <div class="process-step-card">
+                                <span class="process-step-num" aria-hidden="true">02</span>
+                                <h4 class="process-step-title">Ekspertiz ve Onay</h4>
                                 <p class="process-step-desc">Parçalar sökülür, hasar tespiti yapılır. Size net fiyat ve yapılacak işlem listesi sunulur.</p>
                             </div>
-                        </div>
-                        <div class="process-step process-step--left">
-                            <span class="process-step-dot" aria-hidden="true"></span>
-                            <span class="process-step-num" aria-hidden="true">03</span>
-                            <div class="process-step-content">
-                                <h3 class="process-step-title">Hassas Onarım</h3>
+                            <div class="process-step-card">
+                                <span class="process-step-num" aria-hidden="true">03</span>
+                                <h4 class="process-step-title">Hassas Onarım</h4>
                                 <p class="process-step-desc">Onayınızla birlikte orijinal yedek parçalar kullanılarak laboratuvar ortamında montaj yapılır.</p>
                             </div>
-                        </div>
-                        <div class="process-step process-step--right">
-                            <span class="process-step-dot" aria-hidden="true"></span>
-                            <span class="process-step-num" aria-hidden="true">04</span>
-                            <div class="process-step-content">
-                                <h3 class="process-step-title">Son Kontrol ve Teslim</h3>
+                            <div class="process-step-card">
+                                <span class="process-step-num" aria-hidden="true">04</span>
+                                <h4 class="process-step-title">Son Kontrol ve Teslim</h4>
                                 <p class="process-step-desc">Test tezgahında fabrika değerlerini veren parça araca takılır, yol testi yapılır ve teslim edilir.</p>
                             </div>
-                        </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Services (ana sayfa: minimal, tek buton) -->
-        <section id="hizmetler" class="services-section section section-bg-light services-section--minimal">
+        <!-- Hizmetlerimiz (ana sayfa: Neler Yapıyoruz? + grid, Sheets’ten doldurulur) -->
+        <section id="hizmetler" class="services-section section services-section--home">
             <div class="container">
-                <div class="section-header text-center">
-                    <span class="section-label">Hizmetlerimiz</span>
-                    <h2 class="section-title">Profesyonel Dizel Çözümleri</h2>
+                <div class="services-section-header text-center">
+                    <h2 class="services-section-label">HİZMETLERİMİZ</h2>
+                    <h3 class="services-section-title">Neler Yapıyoruz?</h3>
+                    <p class="services-section-desc">Teknik Dizel olarak binek, hafif ticari ve ağır vasıta araçlar için uçtan uca çözümler sunuyoruz.</p>
                 </div>
-                <div id="services-grid" class="services-grid services-grid--minimal">
-                    <!-- JS ile minimal kartlar (sadece görsel + başlık) -->
+                <div id="services-grid" class="services-grid services-grid--home">
+                    <!-- JS ile Sheets’ten kartlar yüklenir -->
                 </div>
-                <div class="services-cta-wrap">
-                    <a href="hizmetler.html" class="btn-outline-dark">Tüm Hizmetler</a>
+                <div class="services-cta-wrap text-center">
+                    <a href="hizmetler.html" class="services-cta-link">Tüm hizmetleri görüntüle <span aria-hidden="true">→</span></a>
                 </div>
             </div>
         </section>
@@ -267,13 +255,12 @@
             </div>
         </section>
 
-        <!-- FAQ -->
-        <section id="sss" class="faq-section section section-bg-light">
-            <div class="container faq-container">
-                <div class="section-header text-center">
-                    <span class="section-label">Sıkça Sorulan Sorular</span>
-                    <h2 class="section-title">Aklınıza Takılanlar</h2>
-                    <p class="section-desc">Dizel yakıt sistemleri ve servis süreçlerimizle ilgili merak edilenler.</p>
+        <!-- S.S.S (Sheets’ten yüklenir) -->
+        <section id="sss" class="faq-section section">
+            <div class="container faq-container faq-container--narrow">
+                <div class="faq-section-header text-center">
+                    <h2 class="faq-section-label">S.S.S</h2>
+                    <h3 class="faq-section-title">Sıkça Sorulan Sorular</h3>
                 </div>
                 <div id="faq-container" class="faq-list"></div>
             </div>

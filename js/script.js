@@ -506,48 +506,54 @@ function toDirectImageUrl(url) {
     return u;
 }
 
-/** Tek bir hizmet kartı DOM elementi oluşturur (görsel üstte, overlay, floating ikon, CTA) */
+/** Tek bir hizmet kartı: üstte görsel (gradient overlay + sağ üst ikon), altta başlık + açıklama + Detayları İncele. Sheets: title, shortDesc, photoUrl. */
 function createServiceCard(title, shortDesc, photoUrl, detailUrl) {
     detailUrl = detailUrl || SERVICES_PAGE_URL;
-    const card = document.createElement("article");
-    card.className = "service-card service-card--with-image";
-    const imgWrap = document.createElement("div");
-    imgWrap.className = "service-card-image";
-    const img = document.createElement("img");
     const rawUrl = (photoUrl && String(photoUrl).trim()) ? photoUrl : "";
     const finalUrl = rawUrl ? toDirectImageUrl(rawUrl) : "";
-    img.src = finalUrl || DEFAULT_SERVICE_IMAGE;
+    const imgSrc = finalUrl || DEFAULT_SERVICE_IMAGE;
+
+    const card = document.createElement("article");
+    card.className = "service-card service-card--home";
+
+    const imgWrap = document.createElement("div");
+    imgWrap.className = "service-card-image-wrap";
+    const gradientOverlay = document.createElement("div");
+    gradientOverlay.className = "service-card-image-overlay";
+    const hoverOverlay = document.createElement("div");
+    hoverOverlay.className = "service-card-image-hover";
+    const iconWrap = document.createElement("div");
+    iconWrap.className = "service-card-icon-wrap";
+    iconWrap.setAttribute("aria-hidden", "true");
+    iconWrap.innerHTML = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"3\"/><path d=\"M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-1.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h1.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v1.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-1.09a1.65 1.65 0 0 0-1.51 1z\"/></svg>";
+    const img = document.createElement("img");
+    img.src = imgSrc;
     img.alt = title;
     img.loading = "lazy";
     img.onerror = function () { this.onerror = null; this.src = DEFAULT_SERVICE_IMAGE; };
     imgWrap.appendChild(img);
-    const overlay = document.createElement("div");
-    overlay.className = "service-card-overlay";
-    imgWrap.appendChild(overlay);
+    imgWrap.appendChild(gradientOverlay);
+    imgWrap.appendChild(hoverOverlay);
+    imgWrap.appendChild(iconWrap);
     card.appendChild(imgWrap);
+
     const body = document.createElement("div");
     body.className = "service-card-body";
-    const detailBtn = document.createElement("a");
-    detailBtn.href = detailUrl;
-    detailBtn.className = "service-card-detail-btn";
-    detailBtn.setAttribute("aria-label", title + " detaylı bilgi");
-    detailBtn.innerHTML = "<svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z\"/></svg>";
-    body.appendChild(detailBtn);
     const titleEl = document.createElement("h3");
-    titleEl.className = "service-title";
+    titleEl.className = "service-card-title";
     titleEl.textContent = title;
-    body.appendChild(titleEl);
     const descEl = document.createElement("p");
-    descEl.className = "service-desc";
+    descEl.className = "service-card-desc";
     descEl.textContent = shortDesc || "";
-    body.appendChild(descEl);
     const cta = document.createElement("a");
     cta.href = detailUrl;
     cta.className = "service-card-cta";
-    cta.textContent = "Detaylı Bilgi";
-    cta.innerHTML = "Detaylı Bilgi <span aria-hidden=\"true\">→</span>";
+    cta.innerHTML = "Detayları İncele <span aria-hidden=\"true\">→</span>";
+    body.appendChild(titleEl);
+    body.appendChild(descEl);
     body.appendChild(cta);
     card.appendChild(body);
+
     return card;
 }
 
