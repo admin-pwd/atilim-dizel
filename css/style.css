@@ -8,7 +8,7 @@
 
 :root {
   /* Ana Renk Paleti - Dark Mode */
-  --background: #050A18;
+  --background: rgb(5, 10, 24);
   --surface: #132850;
   --surface-highlight: #1e293b;
   --surface-card: #1a2435;
@@ -16,7 +16,7 @@
   --surface-gradient: linear-gradient(165deg, #0f2744 0%, #132850 35%, #0d1b33 100%);
   --surface-card-gradient: linear-gradient(145deg, #1a2435 0%, #1e2d42 50%, #162033 100%);
   --surface-card-gradient-subtle: linear-gradient(180deg, rgba(59, 130, 246, 0.06) 0%, transparent 50%, rgba(99, 102, 241, 0.04) 100%);
-  --surface-highlight-gradient: linear-gradient(160deg, #1e293b 0%, #243348 40%, #1a2332 100%);
+  --surface-highlight-gradient: linear-gradient(160deg, #0b1e3d 0%, #0e1827 40%, #0b0f15 100%);
   /* Kartlar surface arka planda daha koyu = kontrast */
   --card-on-surface-bg: linear-gradient(145deg, #0d1b33 0%, #0a1428 50%, #050A18 100%);
   --card-on-surface-subtle: linear-gradient(180deg, rgba(59, 130, 246, 0.08) 0%, transparent 50%, rgba(0, 0, 0, 0.15) 100%);
@@ -65,7 +65,7 @@ html {
 }
 
 body {
-  background-color: var(--background);
+  background: var(--surface-gradient);
   color: var(--text-muted);
   font-family: 'Plus Jakarta Sans', sans-serif;
   margin: 0;
@@ -74,7 +74,37 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
 }
+
+/* Global vektör arkaplan deseni (surface tasarımı) */
+.vector-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    radial-gradient(circle at 2px 2px, rgba(255,255,255,0.05) 1px, transparent 0),
+    linear-gradient(to right, rgba(255,255,255,0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.02) 1px, transparent 1px);
+  background-size: 40px 40px, 80px 80px, 80px 80px;
+}
+
+/* İçeriğin vektör deseninin üzerinde kalması */
+.skip-link,
+.header,
+#main-content,
+.footer-section {
+  position: relative;
+  z-index: 1;
+}
+
+/* Hero itibariyle sırayla: şeffaf (surface gradient görünür) / koyu */
+#main-content > section:nth-of-type(odd) { background: transparent; }
+#main-content > section:nth-of-type(even) { background: var(--background); }
 
 body.font-large { font-size: 1.15rem; }
 body.high-contrast {
@@ -309,7 +339,7 @@ a.logo {
   position: absolute;
   top: 100%;
   left: 0; right: 0;
-  background: var(--surface);
+  background: var(--surface-gradient);
   border-bottom: 1px solid var(--border-light);
   padding: 1.5rem;
   display: flex;
@@ -504,11 +534,8 @@ a.logo {
 .partner-logo-delphi { color: #006BB7; }
 .partner-logo-denso { color: #E60012; font-style: italic; }
 .partner-logo-siemens { color: #00ccff; }
-.section-bg-light .partner-logo { filter: brightness(1.05); }
-
 /* Metrik kartları – kurumsal koyu tema */
 .metrics-section {
-  background-color: var(--background);
   padding: 5rem 0;
 }
 .metrics-grid {
@@ -523,7 +550,7 @@ a.logo {
   }
 }
 .metric-card {
-  background: var(--surface-card-gradient);
+  background: var(--surface-highlight-gradient);
   border: 1px solid var(--border-light);
   border-radius: var(--card-radius);
   padding: 1.75rem 1.25rem;
@@ -595,31 +622,12 @@ a.logo {
 }
 
 /* ================= ABOUT ================= */
-/* Section arka plan kontrastı: açık/koyu dönüşümlü */
-.section-bg-dark { background-color: var(--background); }
-.section-bg-light {
-  background: var(--surface-gradient);
-  color: var(--text-dark);
-}
-.section-bg-light .section-title,
-.section-bg-light .section-desc,
-.section-bg-light .section-label,
-.section-bg-light .section-label-sm,
-.section-bg-light h1, .section-bg-light h2, .section-bg-light h3, .section-bg-light h4,
-.section-bg-light .contact-title, .section-bg-light .contact-desc, .section-bg-light .contact-label { color: var(--text-dark); }
-.section-bg-light .section-desc,
-.section-bg-light .contact-desc { color: var(--slate-700); }
-.section-bg-light .section-label,
-.section-bg-light .section-label-sm,
-.section-bg-light .contact-label { color: var(--primary-dark); }
 /* ================= ÖNE ÇIKANLAR (Highlights) ================= */
 .about-section.highlights-section {
   padding: 6rem 0;
-  background-color: var(--surface);
   overflow: hidden;
   position: relative;
 }
-.highlights-section.section-bg-dark { background-color: var(--surface); }
 .highlights-grid {
   display: grid;
   gap: 2.5rem;
@@ -787,7 +795,7 @@ a.logo {
 /* ================= PROCESS – Çalışma Sistemi (sol 1/3 + sağ 2x2 StepCard) ================= */
 .process-section {
   padding: 6rem 0;
-  background: var(--surface);
+  background: var(--background);
   border-top: 1px solid rgba(255, 255, 255, 0.06);
 }
 .process-wrap {
@@ -865,10 +873,13 @@ a.logo {
   }
 }
 .process-step-card {
-  position: relative;
-  padding-left: 2rem;
-  border-left: 2px solid var(--surface-highlight);
+  background: var(--surface-card-gradient);
+  border: 1px solid var(--border-light);
+  border-radius: var(--card-radius);
+  padding: 2.5rem 2.5rem;
   transition: var(--transition);
+  position: relative;
+  overflow: hidden;
 }
 .process-step-card:hover {
   border-left-color: var(--primary);
@@ -876,16 +887,16 @@ a.logo {
 .process-step-num {
   position: absolute;
   right: 0.5rem;
-  top: 0;
+  top: -2rem;
   font-size: 3.5rem;
   font-weight: 800;
   line-height: 1;
-  color: rgba(30, 41, 59, 0.6);
+  color: rgb(14, 19, 27, 0.6);
   pointer-events: none;
   user-select: none;
 }
 .process-step-card:hover .process-step-num {
-  color: rgba(59, 130, 246, 0.08);
+  color: rgba(59, 130, 246, 0.09);
 }
 .process-step-title {
   font-size: 1.125rem;
@@ -910,8 +921,6 @@ a.logo {
 
 /* ================= SERVICES ================= */
 .services-section { padding: 8rem 0; position: relative; }
-.services-section.section-bg-dark { background: var(--background); }
-.services-section.section-bg-light { background: var(--surface-gradient); }
 .services-section .section-label { background: rgba(59,130,246,0.1); border: 1px solid rgba(59,130,246,0.2); }
 .services-section .section-title { color: white; }
 .services-section .section-desc { color: var(--text-muted); }
@@ -925,7 +934,6 @@ a.logo {
 /* Ana sayfa Hizmetlerimiz: Neler Yapıyoruz? + 4’lü grid + Tüm hizmetleri görüntüle */
 .services-section--home {
   padding: 6rem 0;
-  background: var(--background);
 }
 .services-section-header { max-width: 36rem; margin-left: auto; margin-right: auto; margin-bottom: 4rem; }
 .services-section-label {
@@ -976,118 +984,134 @@ a.logo {
   background: var(--surface-highlight);
   border-color: rgba(255, 255, 255, 0.15);
 }
-/* Hizmet kartı – ana sayfa: görsel (gradient + sağ üst ikon) + başlık + açıklama + Detayları İncele */
+/* Hizmet kartı – ana sayfa: tam sayfa görsel, overlay, sağ üst ikon, altta başlık + hover’da açılan açıklama + Detaylar */
 .service-card--home {
-  background: rgba(30, 41, 59, 0.5);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  display: block;
+  position: relative;
+  height: 18rem;
   border-radius: 1rem;
   overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
   transition: var(--transition);
 }
 .service-card--home:hover {
-  border-color: rgba(59, 130, 246, 0.5);
-  transform: translateY(-0.5rem);
-  box-shadow: 0 1.5rem 2.5rem -0.5rem rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(59, 130, 246, 0.1);
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
 }
-.service-card--home .service-card-image-wrap {
-  height: 13rem;
-  position: relative;
-  overflow: hidden;
-}
-.service-card--home .service-card-image-wrap img {
+.service-card--home .service-card-img {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.5s ease;
+  transition: transform 0.7s ease;
 }
-.service-card--home:hover .service-card-image-wrap img {
-  transform: scale(1.08);
+.service-card--home:hover .service-card-img {
+  transform: scale(1.1) rotate(1deg);
 }
-.service-card-image-overlay {
+.service-card-home-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, var(--surface) 0%, transparent 40%, transparent 100%);
-  opacity: 0.85;
+  background: rgba(15, 23, 42, 0.4);
   pointer-events: none;
+  transition: background-color 0.5s ease;
 }
-.service-card-image-hover {
+.service-card--home:hover .service-card-home-overlay {
+  background: rgba(15, 23, 42, 0.6);
+}
+.service-card-home-gradient {
   position: absolute;
   inset: 0;
-  background: rgba(30, 58, 138, 0.2);
+  background: linear-gradient(to bottom, transparent 0%, rgba(15, 23, 42, 0.9) 40%, rgba(15, 23, 42, 1) 100%);
   pointer-events: none;
-  transition: opacity 0.3s ease;
 }
-.service-card--home:hover .service-card-image-hover {
-  opacity: 0;
-}
-.service-card-icon-wrap {
+.service-card--home .service-card-icon-wrap {
   position: absolute;
   top: 1rem;
   right: 1rem;
   z-index: 5;
-  width: 3rem;
-  height: 3rem;
-  background: rgba(15, 23, 42, 0.85);
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 0.75rem;
+  border-radius: 0.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--primary);
-  transition: var(--transition);
+  color: var(--blue-400);
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 .service-card--home:hover .service-card-icon-wrap {
   background: var(--primary);
-  border-color: var(--primary);
   color: white;
+  border-color: var(--primary);
 }
-.service-card--home .service-card-body {
-  padding: 2rem;
-  margin-top: -1.5rem;
-  position: relative;
+.service-card--home .service-card-icon-wrap svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+.service-card--home .service-card-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1.5rem;
   z-index: 2;
-  background: transparent;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
 }
 .service-card--home .service-card-title {
   font-size: 1.25rem;
   font-weight: 700;
   color: white;
-  margin: 0 0 0.75rem;
+  margin: 0 0 0.25rem;
   line-height: 1.3;
-  transition: color 0.2s ease;
+  transition: color 0.3s ease;
 }
 .service-card--home:hover .service-card-title {
   color: var(--blue-400);
 }
+.service-card--home .service-card-desc-wrap {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease;
+}
+.service-card--home:hover .service-card-desc-wrap {
+  max-height: 12rem;
+}
 .service-card--home .service-card-desc {
-  font-size: 0.9375rem;
+  font-size: 0.875rem;
   color: var(--text-muted);
-  line-height: 1.55;
-  margin: 0 0 1.5rem;
-  flex-grow: 1;
+  line-height: 1.5;
+  margin: 0.5rem 0 0;
+  opacity: 0;
+  transition: opacity 0.5s ease 0.1s;
+}
+.service-card--home:hover .service-card-desc {
+  opacity: 1;
 }
 .service-card--home .service-card-cta {
-  font-size: 0.8125rem;
-  font-weight: 700;
-  color: rgba(59, 130, 246, 0.9);
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  text-decoration: none;
   display: inline-flex;
   align-items: center;
-  gap: 0.35rem;
-  transition: var(--transition);
-}
-.service-card--home .service-card-cta:hover {
+  gap: 0.25rem;
+  font-size: 0.75rem;
+  font-weight: 700;
   color: var(--blue-400);
-  gap: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 0.75rem;
+  transition: gap 0.3s ease, color 0.3s ease;
 }
+.service-card--home:hover .service-card-cta {
+  color: var(--blue-400);
+  gap: 0.35rem;
+}
+.service-card--home .service-card-cta span { font-size: 1em; }
 /* Hizmet kartı (genel / hizmetler sayfası): üstte foto, gradient overlay, altta başlık + açıklama + Detaylı Bilgi */
 .service-card {
   background: var(--surface-card-gradient);
@@ -1099,11 +1123,6 @@ a.logo {
   display: flex;
   flex-direction: column;
 }
-/* Surface-gradient (section-bg-light) bölümünde kartlar koyu = kontrast */
-.services-section.section-bg-light .service-card {
-  background: var(--card-on-surface-bg);
-  border-color: rgba(255, 255, 255, 0.1);
-}
 .service-card::before {
   content: '';
   position: absolute;
@@ -1112,9 +1131,6 @@ a.logo {
   pointer-events: none;
   border-radius: inherit;
   z-index: 0;
-}
-.services-section.section-bg-light .service-card::before {
-  background: var(--card-on-surface-subtle);
 }
 .service-card:hover { border-color: var(--primary); }
 .service-card:hover::before {
@@ -1146,9 +1162,6 @@ a.logo {
   padding: 1.5rem;
   position: relative;
   background: var(--surface);
-}
-.services-section.section-bg-light .service-card-body {
-  background: transparent;
 }
 .service-card-detail-btn {
   position: absolute;
@@ -1214,8 +1227,6 @@ a.logo {
 
 /* ================= REVIEWS ================= */
 .reviews-section { padding: 8rem 0; overflow: hidden; position: relative; }
-.reviews-section.section-bg-dark { background: var(--background); }
-.reviews-section.section-bg-light { background: var(--surface-gradient); }
 .reviews-section .section-title { color: white; }
 .reviews-header { margin-bottom: 3rem; }
 .reviews-cta-wrap { display: flex; justify-content: center; margin-top: 2.5rem; }
@@ -1246,7 +1257,7 @@ a.logo {
 @media (min-width: 768px) { .reviews-grid .review-card { min-width: 300px; max-width: 340px; } }
 .review-card {
   min-width: 300px;
-  background: var(--surface-card-gradient);
+  background: var(--surface-highlight-gradient);
   border: 1px solid var(--border-light);
   position: relative;
   overflow: hidden;
@@ -1259,11 +1270,6 @@ a.logo {
   box-sizing: border-box;
   transition: var(--transition);
 }
-/* Surface-gradient bölümünde yorum kartları koyu = kontrast */
-.reviews-section.section-bg-light .review-card {
-  background: var(--card-on-surface-bg);
-  border-color: rgba(255, 255, 255, 0.1);
-}
 .review-card::before {
   content: '';
   position: absolute;
@@ -1271,9 +1277,6 @@ a.logo {
   background: var(--surface-card-gradient-subtle);
   pointer-events: none;
   border-radius: inherit;
-}
-.reviews-section.section-bg-light .review-card::before {
-  background: var(--card-on-surface-subtle);
 }
 .review-card:hover {
   border-color: rgba(59, 130, 246, 0.3);
@@ -1367,8 +1370,6 @@ a.logo {
 
 /* ================= FAQ ================= */
 .faq-section { position: relative; padding: 6rem 0; }
-.faq-section.section-bg-dark { background: var(--background); }
-.faq-section.section-bg-light { background: var(--surface-gradient); }
 .faq-section .section-title { color: white; }
 .faq-section .section-desc { color: var(--text-muted); }
 .faq-container { max-width: 48rem; margin: 0 auto; }
@@ -1405,11 +1406,6 @@ a.logo {
   overflow: hidden;
   position: relative;
 }
-/* Surface-gradient bölümünde SSS kartları koyu = kontrast */
-.faq-section.section-bg-light .faq-item {
-  background: var(--card-on-surface-bg);
-  border-color: rgba(255, 255, 255, 0.1);
-}
 .faq-item::before {
   content: '';
   position: absolute;
@@ -1417,9 +1413,6 @@ a.logo {
   background: linear-gradient(180deg, rgba(59, 130, 246, 0.03) 0%, transparent 50%);
   pointer-events: none;
   border-radius: inherit;
-}
-.faq-section.section-bg-light .faq-item::before {
-  background: var(--card-on-surface-subtle);
 }
 .faq-item[aria-expanded="true"] {
   border-color: var(--primary);
@@ -1461,8 +1454,6 @@ button.faq-question {
 
 /* ================= CONTACT ================= */
 .contact-section { padding: 4rem 0 5rem; }
-.contact-section.section-bg-dark { background: linear-gradient(180deg, var(--background) 0%, #020617 100%); }
-.contact-section.section-bg-light { background: linear-gradient(180deg, #0f2744 0%, var(--surface) 30%, var(--background) 100%); }
 .contact-wrap {
   max-width: 75rem;
   margin: 0 auto;
@@ -1662,7 +1653,7 @@ button.faq-question {
 /* ================= HIZLI FİYAT TEKLİFİ (quote) – görsel stili ================= */
 .quote-section {
   padding: 5rem 0;
-  background: var(--background);
+  background: var(--surface-gradient);
   position: relative;
 }
 .quote-section::before {

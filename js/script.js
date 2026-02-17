@@ -506,53 +506,61 @@ function toDirectImageUrl(url) {
     return u;
 }
 
-/** Tek bir hizmet kartı: üstte görsel (gradient overlay + sağ üst ikon), altta başlık + açıklama + Detayları İncele. Sheets: title, shortDesc, photoUrl. */
+/** Tek bir hizmet kartı: tam sayfa görsel, overlay, sağ üst ikon, altta başlık + hover’da açılan açıklama + Detaylar. Sheets: title, shortDesc, photoUrl. */
 function createServiceCard(title, shortDesc, photoUrl, detailUrl) {
     detailUrl = detailUrl || SERVICES_PAGE_URL;
     const rawUrl = (photoUrl && String(photoUrl).trim()) ? photoUrl : "";
     const finalUrl = rawUrl ? toDirectImageUrl(rawUrl) : "";
     const imgSrc = finalUrl || DEFAULT_SERVICE_IMAGE;
 
-    const card = document.createElement("article");
+    const card = document.createElement("a");
+    card.href = detailUrl;
     card.className = "service-card service-card--home";
+    card.setAttribute("aria-label", title + " – Detaylar");
 
-    const imgWrap = document.createElement("div");
-    imgWrap.className = "service-card-image-wrap";
-    const gradientOverlay = document.createElement("div");
-    gradientOverlay.className = "service-card-image-overlay";
-    const hoverOverlay = document.createElement("div");
-    hoverOverlay.className = "service-card-image-hover";
-    const iconWrap = document.createElement("div");
-    iconWrap.className = "service-card-icon-wrap";
-    iconWrap.setAttribute("aria-hidden", "true");
-    iconWrap.innerHTML = "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"3\"/><path d=\"M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-1.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h1.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v1.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-1.09a1.65 1.65 0 0 0-1.51 1z\"/></svg>";
     const img = document.createElement("img");
     img.src = imgSrc;
     img.alt = title;
     img.loading = "lazy";
+    img.className = "service-card-img";
     img.onerror = function () { this.onerror = null; this.src = DEFAULT_SERVICE_IMAGE; };
-    imgWrap.appendChild(img);
-    imgWrap.appendChild(gradientOverlay);
-    imgWrap.appendChild(hoverOverlay);
-    imgWrap.appendChild(iconWrap);
-    card.appendChild(imgWrap);
+    card.appendChild(img);
 
-    const body = document.createElement("div");
-    body.className = "service-card-body";
-    const titleEl = document.createElement("h3");
+    const overlay = document.createElement("div");
+    overlay.className = "service-card-home-overlay";
+    overlay.setAttribute("aria-hidden", "true");
+    card.appendChild(overlay);
+
+    const gradient = document.createElement("div");
+    gradient.className = "service-card-home-gradient";
+    gradient.setAttribute("aria-hidden", "true");
+    card.appendChild(gradient);
+
+    const iconWrap = document.createElement("div");
+    iconWrap.className = "service-card-icon-wrap";
+    iconWrap.setAttribute("aria-hidden", "true");
+    iconWrap.innerHTML = "<svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z\"/></svg>";
+    card.appendChild(iconWrap);
+
+    const content = document.createElement("div");
+    content.className = "service-card-content";
+    const titleEl = document.createElement("h4");
     titleEl.className = "service-card-title";
     titleEl.textContent = title;
+    content.appendChild(titleEl);
+
+    const descWrap = document.createElement("div");
+    descWrap.className = "service-card-desc-wrap";
     const descEl = document.createElement("p");
     descEl.className = "service-card-desc";
     descEl.textContent = shortDesc || "";
-    const cta = document.createElement("a");
-    cta.href = detailUrl;
+    const cta = document.createElement("span");
     cta.className = "service-card-cta";
-    cta.innerHTML = "Detayları İncele <span aria-hidden=\"true\">→</span>";
-    body.appendChild(titleEl);
-    body.appendChild(descEl);
-    body.appendChild(cta);
-    card.appendChild(body);
+    cta.innerHTML = "Detaylar <span aria-hidden=\"true\">→</span>";
+    descWrap.appendChild(descEl);
+    descWrap.appendChild(cta);
+    content.appendChild(descWrap);
+    card.appendChild(content);
 
     return card;
 }

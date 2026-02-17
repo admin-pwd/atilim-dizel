@@ -10,11 +10,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/style.css?v=2" />
     <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js" defer></script>
-    <script src="js/script.js" defer></script>
+    <script src="js/script.js?v=2" defer></script>
 </head>
 <body>
+    <div class="vector-bg" aria-hidden="true"></div>
     <a class="skip-link" href="#main-content">İçeriğe geç</a>
 
     <!-- Header - atilim-dizel stili -->
@@ -86,7 +87,7 @@
         </section>
 
         <!-- Partner markalar (açık bölüm) -->
-        <section class="partners-section section section-bg-light" aria-label="Partner markalar">
+        <section class="partners-section section" aria-label="Partner markalar">
             <div class="container">
                 <div class="partners-logos">
                     <span class="partner-logo partner-logo-bosch" aria-hidden="true">BOSCH</span>
@@ -98,7 +99,7 @@
         </section>
 
         <!-- Metrikler (kurumsal kartlar) -->
-        <section class="metrics-section section section-bg-dark" aria-label="Rakamlarla biz">
+        <section class="metrics-section section" aria-label="Rakamlarla biz">
             <div class="container">
                 <div class="metrics-grid">
                     <div class="metric-card">
@@ -134,7 +135,7 @@
         </section>
 
         <!-- Öne Çıkanlar -->
-        <section id="hakkimizda" class="about-section section section-bg-dark highlights-section" aria-label="Öne çıkanlar">
+        <section id="hakkimizda" class="about-section section highlights-section" aria-label="Öne çıkanlar">
             <div class="container">
                 <div class="highlights-grid">
                     <div class="highlights-stats">
@@ -215,9 +216,9 @@
         <!-- Hizmetlerimiz (ana sayfa: Neler Yapıyoruz? + grid, Sheets’ten doldurulur) -->
         <section id="hizmetler" class="services-section section services-section--home">
             <div class="container">
-                <div class="services-section-header text-center">
+                <div class="section-header text-center">
                     <h2 class="services-section-label">HİZMETLERİMİZ</h2>
-                    <h3 class="services-section-title">Neler Yapıyoruz?</h3>
+                    <h3 class="section-title">Neler Yapıyoruz?</h3>
                     <p class="services-section-desc">Teknik Dizel olarak binek, hafif ticari ve ağır vasıta araçlar için uçtan uca çözümler sunuyoruz.</p>
                 </div>
                 <div id="services-grid" class="services-grid services-grid--home">
@@ -230,7 +231,7 @@
         </section>
 
         <!-- Reviews -->
-        <section class="reviews-section section section-bg-dark">
+        <section class="reviews-section section">
             <div class="container">
                 <div class="reviews-header section-header text-center">
                     <span class="section-label">Müşteri Yorumları</span>
@@ -254,7 +255,71 @@
                 </div>
             </div>
         </section>
-
+  <!-- Hızlı Fiyat Teklifi -->
+  <section id="teklif-al" class="quote-section section">
+    <div class="container">
+        <div class="quote-card">
+            <div class="quote-card-left">
+                <span class="quote-badge"><svg class="quote-badge-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>ÜCRETSİZ DANIŞMANLIK</span>
+                <h2 class="quote-title">Hızlı Fiyat Teklifi<br><span class="quote-title-accent">15 Dakikada</span> Cebinizde</h2>
+                <p class="quote-desc">Aracınızın sorununu veya yaptırmak istediğiniz işlemi bize yazın, uzman ustalarımız 15 dakika içinde sizi arayıp tahmini maliyet ve süreç hakkında bilgi versin.</p>
+                <ul class="quote-benefits" aria-label="Avantajlar">
+                    <li class="quote-benefit">
+                        <span class="quote-benefit-icon quote-benefit-icon--green" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>
+                        <span>Sürpriz maliyet yok, şeffaf fiyatlandırma</span>
+                    </li>
+                    <li class="quote-benefit">
+                        <span class="quote-benefit-icon quote-benefit-icon--green" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>
+                        <span>Uzman görüşü ile doğru yönlendirme</span>
+                    </li>
+                    <li class="quote-benefit">
+                        <span class="quote-benefit-icon quote-benefit-icon--green" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>
+                        <span>WhatsApp üzerinden hızlı dönüş</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="quote-card-right">
+                <form id="quote-form" class="quote-form" novalidate>
+                    <div class="quote-form-row">
+                        <div class="form-field">
+                            <label class="form-label" for="quote-name">Adınız Soyadınız</label>
+                            <input type="text" id="quote-name" name="name" class="form-input" placeholder="Ahmet Yılmaz" required>
+                        </div>
+                        <div class="form-field">
+                            <label class="form-label" for="quote-phone">Telefon Numaranız</label>
+                            <input type="tel" id="quote-phone" name="phone" class="form-input" placeholder="05XX XXX XX XX" required>
+                        </div>
+                    </div>
+                    <div class="form-field">
+                        <label class="form-label" for="quote-vehicle">Araç Bilgisi (Marka / Model)</label>
+                        <input type="text" id="quote-vehicle" name="vehicle" class="form-input" placeholder="Örn: Ford Transit 2018">
+                    </div>
+                    <div class="form-field">
+                        <label class="form-label" for="quote-complaint-type">Şikayetiniz Nedir?</label>
+                        <select id="quote-complaint-type" name="complaint_type" class="form-input form-select">
+                            <option value="">Seçiniz...</option>
+                            <option value="siyah-duman">Siyah Duman Atıyor</option>
+                            <option value="gec-calisiyor">Araç Geç Çalışıyor</option>
+                            <option value="cekis-dusuk">Çekiş Düşüklüğü Var</option>
+                            <option value="yakit-artti">Yakıt Tüketimi Arttı</option>
+                            <option value="bakim">Periyodik Bakım Fiyatı</option>
+                            <option value="diger">Diğer</option>
+                        </select>
+                    </div>
+                    <div class="form-field">
+                        <label class="form-label" for="quote-complaint">Detaylı açıklama</label>
+                        <textarea id="quote-complaint" name="complaint" class="form-textarea" placeholder="Detaylı açıklama yazabilirsiniz..." rows="3"></textarea>
+                    </div>
+                    <button type="submit" class="btn quote-submit">
+                        <span>Teklif İste</span>
+                        <span class="quote-submit-arrow" aria-hidden="true">→</span>
+                    </button>
+                    <p class="quote-disclaimer">*Gönderdiğiniz bilgiler KVKK kapsamında korunmaktadır.</p>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
         <!-- S.S.S (Sheets’ten yüklenir) -->
         <section id="sss" class="faq-section section">
             <div class="container faq-container faq-container--narrow">
@@ -266,74 +331,10 @@
             </div>
         </section>
 
-        <!-- Hızlı Fiyat Teklifi -->
-        <section id="teklif-al" class="quote-section section section-bg-dark">
-            <div class="container">
-                <div class="quote-card">
-                    <div class="quote-card-left">
-                        <span class="quote-badge"><svg class="quote-badge-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>ÜCRETSİZ DANIŞMANLIK</span>
-                        <h2 class="quote-title">Hızlı Fiyat Teklifi<br><span class="quote-title-accent">15 Dakikada</span> Cebinizde</h2>
-                        <p class="quote-desc">Aracınızın sorununu veya yaptırmak istediğiniz işlemi bize yazın, uzman ustalarımız 15 dakika içinde sizi arayıp tahmini maliyet ve süreç hakkında bilgi versin.</p>
-                        <ul class="quote-benefits" aria-label="Avantajlar">
-                            <li class="quote-benefit">
-                                <span class="quote-benefit-icon quote-benefit-icon--green" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>
-                                <span>Sürpriz maliyet yok, şeffaf fiyatlandırma</span>
-                            </li>
-                            <li class="quote-benefit">
-                                <span class="quote-benefit-icon quote-benefit-icon--green" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>
-                                <span>Uzman görüşü ile doğru yönlendirme</span>
-                            </li>
-                            <li class="quote-benefit">
-                                <span class="quote-benefit-icon quote-benefit-icon--green" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>
-                                <span>WhatsApp üzerinden hızlı dönüş</span>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="quote-card-right">
-                        <form id="quote-form" class="quote-form" novalidate>
-                            <div class="quote-form-row">
-                                <div class="form-field">
-                                    <label class="form-label" for="quote-name">Adınız Soyadınız</label>
-                                    <input type="text" id="quote-name" name="name" class="form-input" placeholder="Ahmet Yılmaz" required>
-                                </div>
-                                <div class="form-field">
-                                    <label class="form-label" for="quote-phone">Telefon Numaranız</label>
-                                    <input type="tel" id="quote-phone" name="phone" class="form-input" placeholder="05XX XXX XX XX" required>
-                                </div>
-                            </div>
-                            <div class="form-field">
-                                <label class="form-label" for="quote-vehicle">Araç Bilgisi (Marka / Model)</label>
-                                <input type="text" id="quote-vehicle" name="vehicle" class="form-input" placeholder="Örn: Ford Transit 2018">
-                            </div>
-                            <div class="form-field">
-                                <label class="form-label" for="quote-complaint-type">Şikayetiniz Nedir?</label>
-                                <select id="quote-complaint-type" name="complaint_type" class="form-input form-select">
-                                    <option value="">Seçiniz...</option>
-                                    <option value="siyah-duman">Siyah Duman Atıyor</option>
-                                    <option value="gec-calisiyor">Araç Geç Çalışıyor</option>
-                                    <option value="cekis-dusuk">Çekiş Düşüklüğü Var</option>
-                                    <option value="yakit-artti">Yakıt Tüketimi Arttı</option>
-                                    <option value="bakim">Periyodik Bakım Fiyatı</option>
-                                    <option value="diger">Diğer</option>
-                                </select>
-                            </div>
-                            <div class="form-field">
-                                <label class="form-label" for="quote-complaint">Detaylı açıklama</label>
-                                <textarea id="quote-complaint" name="complaint" class="form-textarea" placeholder="Detaylı açıklama yazabilirsiniz..." rows="3"></textarea>
-                            </div>
-                            <button type="submit" class="btn quote-submit">
-                                <span>Teklif İste</span>
-                                <span class="quote-submit-arrow" aria-hidden="true">→</span>
-                            </button>
-                            <p class="quote-disclaimer">*Gönderdiğiniz bilgiler KVKK kapsamında korunmaktadır.</p>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </section>
+      
 
         <!-- İletişim CTA (detay için iletişim sayfasına yönlendir) -->
-        <section id="iletisim" class="contact-section contact-cta-section section-bg-dark">
+        <section id="iletisim" class="contact-section contact-cta-section">
             <div class="contact-wrap">
                 <header class="contact-header">
                     <span class="contact-label">İletişim</span>
