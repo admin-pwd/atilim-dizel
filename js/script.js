@@ -30,41 +30,17 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 /**
- * İletişim formu gönderimini bağlar.
+ * İletişim formu: FormSubmit.co'ya native POST (JS müdahalesi yok).
  */
 function initContactForm() {
-    const form = document.getElementById("contact-form");
-    if (form) {
-        form.addEventListener("submit", (e) => {
-            e.preventDefault();
-            alert("Mesajınız alındı. En kısa sürede size dönüş yapılacaktır.");
-        });
-    }
+    // Form action="https://formsubmit.co/osmanfaruk21@gmail.com" method="POST ile gönderiliyor.
 }
 
 /**
- * Ücretsiz teklif formu: gönderince osmanfaruk21@gmail.com adresine mailto ile açılır.
+ * Teklif formu: FormSubmit.co'ya native POST (JS müdahalesi yok).
  */
 function initQuoteForm() {
-    const form = document.getElementById("quote-form");
-    if (!form) return;
-    form.addEventListener("submit", function (e) {
-        e.preventDefault();
-        var nameEl = document.getElementById("quote-name");
-        var phoneEl = document.getElementById("quote-phone");
-        var vehicleEl = document.getElementById("quote-vehicle");
-        var typeEl = document.getElementById("quote-complaint-type");
-        var complaintEl = document.getElementById("quote-complaint");
-        var name = (nameEl && nameEl.value) ? String(nameEl.value).trim() : "";
-        var phone = (phoneEl && phoneEl.value) ? String(phoneEl.value).trim() : "";
-        var vehicle = (vehicleEl && vehicleEl.value) ? String(vehicleEl.value).trim() : "";
-        var typeText = (typeEl && typeEl.selectedIndex >= 0 && typeEl.options[typeEl.selectedIndex]) ? String(typeEl.options[typeEl.selectedIndex].text).trim() : "";
-        var complaint = (complaintEl && complaintEl.value) ? String(complaintEl.value).trim() : "";
-        var subject = "Web Sitesi - Fiyat Teklifi Talebi";
-        var body = "İsim Soyisim: " + name + "\nTelefon: " + phone + "\nAraç Bilgisi: " + vehicle + "\nŞikayet / Konu: " + typeText + "\nDetay: " + complaint;
-        var mailto = "mailto:osmanfaruk21@gmail.com?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
-        window.location.href = mailto;
-    });
+    // Form action="https://formsubmit.co/osmanfaruk21@gmail.com" method="POST ile gönderiliyor.
 }
 
 /**
@@ -270,9 +246,24 @@ async function loadGeneralInfo(url) {
         const mobileLocation = document.getElementById("mobile-location");
         if (mobileLocation) mobileLocation.textContent = addressValue;
     }
-    // Yol tarifi her zaman doğru konuma gitsin (Atılım Dizel - embed ile aynı koordinatlar)
-    const heroMapBtn = document.getElementById("hero-map-btn");
-    if (heroMapBtn) heroMapBtn.setAttribute("href", "https://www.google.com/maps?q=41.14724384144144,27.839888293549183");
+    // Yol tarifi: Sheets'te harita_link varsa onu kullan (geçerli URL veya en,boy), yoksa varsayılan
+    const defaultMapUrl = "https://www.google.com/maps?q=41.14724384144144,27.839888293549183";
+    const mapLinkKeys = ["harita_link", "harita link", "map_link", "map link", "yol_tarifi", "yol tarifi", "konum_link", "directions"];
+    const rawMap = findFirstKey(infoMap, mapLinkKeys);
+    const trimmed = (rawMap && String(rawMap).trim()) ? String(rawMap).trim() : "";
+    let mapUrl = defaultMapUrl;
+    if (trimmed) {
+        if (/^https?:\/\//i.test(trimmed)) {
+            mapUrl = trimmed;
+        } else if (/^-?\d+\.?\d*\s*,\s*-?\d+\.?\d*$/.test(trimmed.replace(/\s/g, ""))) {
+            mapUrl = "https://www.google.com/maps?q=" + encodeURIComponent(trimmed.replace(/\s/g, ""));
+        }
+    }
+    document.querySelectorAll("#hero-map-btn").forEach(function (btn) {
+        btn.setAttribute("href", mapUrl);
+        btn.setAttribute("target", "_blank");
+        btn.setAttribute("rel", "noopener noreferrer");
+    });
 
     // Hero başlık
     const heroTitleKeys = ["hero_title", "hero başlık", "herotitle", "slogan"];
@@ -345,13 +336,13 @@ async function loadGeneralInfo(url) {
         if (mobilePhoneLink) mobilePhoneLink.setAttribute("href", "tel:" + String(phoneForMobile).replace(/\s+/g, "").replace(/[()\-]/g, ""));
     }
 
-    // Harita embed
-    const haritaKeys = ["harita_embed", "harita embed", "map_embed"];
-    const haritaValue = findFirstKey(infoMap, haritaKeys);
-    if (haritaValue) {
+    // Harita embed (iframe HTML) – Sheets’teki key: harita_embed / map_embed / harita_iframe / embed vb.
+    const haritaEmbedKeys = ["harita_embed", "harita embed", "map_embed", "harita_iframe", "map_iframe", "embed", "harita", "map"];
+    const haritaEmbedValue = findFirstKey(infoMap, haritaEmbedKeys);
+    if (haritaEmbedValue && String(haritaEmbedValue).trim()) {
         const heroMapContainer = document.getElementById("hero-map-container");
         if (heroMapContainer) {
-            heroMapContainer.innerHTML = haritaValue;
+            heroMapContainer.innerHTML = String(haritaEmbedValue).trim();
         }
     }
 
@@ -363,7 +354,7 @@ async function loadGeneralInfo(url) {
         const whatsappMsg = findFirstKey(infoMap, ["whatsapp_msg", "whatsapp mesaj", "whatsapp_message"]) || "Merhaba, randevu almak istiyorum.";
         const whatsappUrl = `https://wa.me/${cleanWhatsapp}?text=${encodeURIComponent(whatsappMsg)}`;
         
-        const whatsappButtons = document.querySelectorAll(".whatsapp-button, #hero-whatsapp-btn");
+        const whatsappButtons = document.querySelectorAll(".whatsapp-button, .whatsapp-float, #hero-whatsapp-btn");
         whatsappButtons.forEach((btn) => {
             btn.setAttribute("href", whatsappUrl);
         });
@@ -548,47 +539,93 @@ function createServiceCard(title, shortDesc, photoUrl, detailUrl) {
     titleEl.className = "service-card-title";
     titleEl.textContent = title;
     content.appendChild(titleEl);
-
-    const descWrap = document.createElement("div");
-    descWrap.className = "service-card-desc-wrap";
-    const descEl = document.createElement("p");
-    descEl.className = "service-card-desc";
-    descEl.textContent = shortDesc || "";
+    const underline = document.createElement("div");
+    underline.className = "service-card-underline";
+    underline.setAttribute("aria-hidden", "true");
+    content.appendChild(underline);
     const cta = document.createElement("span");
     cta.className = "service-card-cta";
-    cta.innerHTML = "Detaylar <span aria-hidden=\"true\">→</span>";
-    descWrap.appendChild(descEl);
-    descWrap.appendChild(cta);
-    content.appendChild(descWrap);
+    cta.innerHTML = "Detayları incele <span aria-hidden=\"true\">→</span>";
+    content.appendChild(cta);
     card.appendChild(content);
 
     return card;
 }
 
+/** Hizmetler sayfası için tek bir detay satırı: görsel + başlık + açıklama + CTA (satır satır ilerleyen detay sayfası). */
+function createServiceDetailRow(title, shortDesc, photoUrl, index) {
+    const rawUrl = (photoUrl && String(photoUrl).trim()) ? photoUrl : "";
+    const finalUrl = rawUrl ? toDirectImageUrl(rawUrl) : "";
+    const imgSrc = finalUrl || DEFAULT_SERVICE_IMAGE;
+
+    const row = document.createElement("article");
+    row.className = "service-detail-row";
+    row.setAttribute("aria-labelledby", "service-detail-title-" + index);
+
+    const inner = document.createElement("div");
+    inner.className = "service-detail-row-inner" + (index % 2 === 1 ? " service-detail-row-inner--reverse" : "");
+
+    const media = document.createElement("div");
+    media.className = "service-detail-media";
+    const img = document.createElement("img");
+    img.src = imgSrc;
+    img.alt = title;
+    img.loading = "lazy";
+    img.onerror = function () { this.onerror = null; this.src = DEFAULT_SERVICE_IMAGE; };
+    media.appendChild(img);
+    inner.appendChild(media);
+
+    const body = document.createElement("div");
+    body.className = "service-detail-body";
+    const titleEl = document.createElement("h2");
+    titleEl.id = "service-detail-title-" + index;
+    titleEl.className = "service-detail-title";
+    titleEl.textContent = title;
+    body.appendChild(titleEl);
+    if (shortDesc && String(shortDesc).trim()) {
+        const desc = document.createElement("p");
+        desc.className = "service-detail-desc";
+        desc.textContent = shortDesc.trim();
+        body.appendChild(desc);
+    }
+    const ctaWrap = document.createElement("p");
+    ctaWrap.className = "service-detail-cta-wrap";
+    const cta = document.createElement("a");
+    cta.href = "index.html#teklif-al";
+    cta.className = "btn btn-primary";
+    cta.textContent = "Teklif Al";
+    ctaWrap.appendChild(cta);
+    body.appendChild(ctaWrap);
+    inner.appendChild(body);
+
+    row.appendChild(inner);
+    return row;
+}
+
 /**
  * Hizmetler listesini Google Sheets'ten doldurur.
- * Veri gelmezse veya boşsa varsayılan hizmet kartları gösterilir.
- * Kolonlar: hizmet_adi (veya name, title), hizmet_aciklama (veya description, açıklama)
+ * Ana sayfada: grid kartlar. Hizmetler sayfasında: satır satır detay blokları.
  */
 async function loadServices(url) {
-    const servicesGrid = document.getElementById("services-grid");
-    if (!servicesGrid) return;
+    const container = document.getElementById("services-grid");
+    if (!container) return;
 
     const data = await fetchCSV(url);
-    servicesGrid.innerHTML = "";
+    container.innerHTML = "";
 
     if (data && data.length > 0) {
         console.log("Hizmetler CSV: " + data.length + " satır. Kolonlar:", Object.keys(data[0]).map(function (k) { return JSON.stringify(k); }).join(", "));
     } else {
-        console.warn("Hizmetler CSV boş veya yüklenemedi. URL'deki gid= değeri Hizmetler sayfasının ID'si olmalı.");
+        console.warn("Hizmetler CSV boş veya yüklenemedi.");
     }
 
     const titleKeys = ["hizmet_adi", "hizmet adi", "hizmet adı", "hizmetadi", "Hizmet_Adi", "name", "title", "baslik", "başlık", "hizmet", "servis", "service", "ad"];
     const descKeys = ["hizmet_aciklama", "hizmet aciklama", "hizmet açıklama", "hizmetaciklama", "Hizmet_Aciklama", "description", "aciklama", "açıklama", "desc", "detay", "content", "açıklama"];
-    /* Görsel hücrede değil, link olarak bir sütunda olmalı (CSV görsel verisi taşımaz). Bu sütun adları aranır: */
     const photoKeys = ["photo_url", "photo url", "foto linki", "foto link", "fotograf linki", "gorsel linki", "görsel linki", "resim linki", "image url", "image_url", "photos", "Photos", "photo", "Photo", "foto", "Foto", "resim", "Resim", "gorsel", "görsel", "Görsel", "image", "Image", "img", "Img", "fotograf", "Fotograf", "fotoğraf", "resimler", "Resimler", "gorseller", "Görseller", "foto_url", "resim_url", "fotograflar"];
 
+    const isDetailPage = container.closest && container.closest(".services-section--detail-page");
     let addedCount = 0;
+
     if (data && data.length > 0) {
         data.forEach((row, index) => {
             let title = getRowValue(row, titleKeys);
@@ -599,22 +636,24 @@ async function loadServices(url) {
                 if (shortDesc === "") shortDesc = firstTwo.desc;
             }
             if (!title || !String(title).trim()) {
-                console.warn("Hizmet satırı atlandı (başlık yok):", index + 1, Object.keys(row), row);
+                console.warn("Hizmet satırı atlandı (başlık yok):", index + 1);
                 return;
             }
             let photoUrl = getRowValue(row, photoKeys);
             if (photoUrl) photoUrl = parseImageUrlFromCell(photoUrl) || photoUrl;
             if (!photoUrl) photoUrl = getFirstImageUrlFromRow(row);
-            servicesGrid.appendChild(createServiceCard(title, shortDesc, photoUrl, SERVICES_PAGE_URL));
+
+            if (isDetailPage) {
+                container.appendChild(createServiceDetailRow(title, shortDesc, photoUrl, addedCount));
+            } else {
+                container.appendChild(createServiceCard(title, shortDesc, photoUrl, SERVICES_PAGE_URL));
+            }
             addedCount++;
         });
     }
 
     if (addedCount === 0) {
-        console.warn("Hizmetler CSV yok veya geçerli satır yok; hizmet listesi boş bırakıldı.");
-    }
-    if (data && data.length > 0 && addedCount > 0) {
-        console.log("Hizmetler yüklendi. İlk satır kolonları:", Object.keys(data[0]));
+        console.warn("Hizmetler CSV yok veya geçerli satır yok; liste boş bırakıldı.");
     }
 }
 

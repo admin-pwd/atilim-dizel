@@ -34,7 +34,7 @@
                 <a href="hizmetler.html" class="nav-link">Hizmetler</a>
                 <a href="index.html#sss" class="nav-link">SSS</a>
                 <a href="iletisim.html" class="nav-link">İletişim</a>
-                <a href="tel:" class="phone-cta" id="header-phone">
+                <a href="tel:" class="btn btn-primary phone-cta" id="header-phone">
                     <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
                     <span id="header-phone-text"></span>
                 </a>
@@ -161,7 +161,7 @@
                         </div>
                     </div>
                     <div class="highlights-content">
-                        <p class="highlights-label"><span class="highlights-label-line" aria-hidden="true"></span>KURUMSAL</p>
+                        <p class="section-label"></span>KURUMSAL</p>
                         <h2 class="highlights-title" id="about-title">Motorunuzun Kalbine Profesyonel Dokunuş</h2>
                         <p class="highlights-desc" id="about-text">Aracınızın yakıt sistemi, performansın ve ekonominin anahtarıdır. Biz, sadece parça değiştiren değil, sorunun köküne inen ve <strong>orijinal fabrika değerlerinde</strong> onarım yapan bir teknoloji üssüyüz.</p>
                         <ul class="highlights-check-list" aria-label="Kurumsal özellikler">
@@ -179,11 +179,10 @@
         <section class="process-section section">
             <div class="container">
                 <div class="process-wrap">
-                    <div class="process-left">
-                        <h2 class="process-label">ÇALIŞMA SİSTEMİ</h2>
+                    <div class="section-header text-center">
+                        <h2 class="section-header>ÇALIŞMA SİSTEMİ</h2>
                         <h3 class="process-heading">Adım Adım Onarım Süreci</h3>
-                        <p class="process-desc-main">Servisimize gelen her parça ve araç, standart bir kalite kontrol sürecinden geçer. Sürpriz maliyetler ve gereksiz değişimler yaşamazsınız.</p>
-                        <a href="index.html#iletisim" class="process-cta-btn">Süreci Başlat</a>
+                        <p class="services-section-desc">Servisimize gelen her parça ve araç, standart bir kalite kontrol sürecinden geçer. Sürpriz maliyetler ve gereksiz değişimler yaşamazsınız.</p>
                     </div>
                     <div class="process-right">
                         <div class="process-steps-grid">
@@ -217,7 +216,7 @@
         <section id="hizmetler" class="services-section section services-section--home">
             <div class="container">
                 <div class="section-header text-center">
-                    <h2 class="services-section-label">HİZMETLERİMİZ</h2>
+                    <h2 class="section-label">HİZMETLERİMİZ</h2>
                     <h3 class="section-title">Neler Yapıyoruz?</h3>
                     <p class="services-section-desc">Teknik Dizel olarak binek, hafif ticari ve ağır vasıta araçlar için uçtan uca çözümler sunuyoruz.</p>
                 </div>
@@ -225,7 +224,7 @@
                     <!-- JS ile Sheets’ten kartlar yüklenir -->
                 </div>
                 <div class="services-cta-wrap text-center">
-                    <a href="hizmetler.html" class="services-cta-link">Tüm hizmetleri görüntüle <span aria-hidden="true">→</span></a>
+                    <a href="hizmetler.html" class="btn btn-outline">Tüm hizmetleri görüntüle <span aria-hidden="true">→</span></a>
                 </div>
             </div>
         </section>
@@ -251,7 +250,7 @@
                     </div>
                 </div>
                 <div class="reviews-cta-wrap">
-                    <a href="https://www.google.com/maps" target="_blank" rel="noopener noreferrer" class="btn-outline-dark">Google Yorumları</a>
+                    <a href="https://www.google.com/maps" target="_blank" rel="noopener noreferrer" class="btn btn-outline">Google Yorumları</a>
                 </div>
             </div>
         </section>
@@ -279,7 +278,9 @@
                 </ul>
             </div>
             <div class="quote-card-right">
-                <form id="quote-form" class="quote-form" novalidate>
+                <form id="quote-form" class="quote-form" action="https://formsubmit.co/osmanfaruk21@gmail.com" method="POST" novalidate>
+                    <input type="hidden" name="_subject" value="Atılım Dizel - Teklif Talebi">
+                    <input type="hidden" name="_captcha" value="false">
                     <div class="quote-form-row">
                         <div class="form-field">
                             <label class="form-label" for="quote-name">Adınız Soyadınız</label>
@@ -290,6 +291,8 @@
                             <input type="tel" id="quote-phone" name="phone" class="form-input" placeholder="05XX XXX XX XX" required>
                         </div>
                     </div>
+                    <div class="form-field">
+                       </div>
                     <div class="form-field">
                         <label class="form-label" for="quote-vehicle">Araç Bilgisi (Marka / Model)</label>
                         <input type="text" id="quote-vehicle" name="vehicle" class="form-input" placeholder="Örn: Ford Transit 2018">
@@ -307,10 +310,10 @@
                         </select>
                     </div>
                     <div class="form-field">
-                        <label class="form-label" for="quote-complaint">Detaylı açıklama</label>
-                        <textarea id="quote-complaint" name="complaint" class="form-textarea" placeholder="Detaylı açıklama yazabilirsiniz..." rows="3"></textarea>
+                        <label class="form-label" for="quote-message">Detaylı açıklama</label>
+                        <textarea id="quote-message" name="message" class="form-textarea" placeholder="Detaylı açıklama yazabilirsiniz..." rows="3"></textarea>
                     </div>
-                    <button type="submit" class="btn quote-submit">
+                    <button type="submit" class="btn btn-primary btn-block quote-submit">
                         <span>Teklif İste</span>
                         <span class="quote-submit-arrow" aria-hidden="true">→</span>
                     </button>
@@ -324,7 +327,7 @@
         <section id="sss" class="faq-section section">
             <div class="container faq-container faq-container--narrow">
                 <div class="faq-section-header text-center">
-                    <h2 class="faq-section-label">S.S.S</h2>
+                    <h2 class="section-label">S.S.S</h2>
                     <h3 class="faq-section-title">Sıkça Sorulan Sorular</h3>
                 </div>
                 <div id="faq-container" class="faq-list"></div>
@@ -337,7 +340,7 @@
         <section id="iletisim" class="contact-section contact-cta-section">
             <div class="contact-wrap">
                 <header class="contact-header">
-                    <span class="contact-label">İletişim</span>
+                    <span class="section-label">İletişim</span>
                     <h2 class="contact-title">Bize Ulaşın</h2>
                     <p class="contact-desc">Sorularınız, randevu talepleriniz veya teknik destek için iletişim sayfamızdan bize ulaşabilirsiniz.</p>
                 </header>
