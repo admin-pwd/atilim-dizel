@@ -209,7 +209,6 @@ async function loadGeneralInfo(url) {
     if (siteAdi) {
         updateElement("site-name", siteAdi);
         updateElement("footer-site-name", siteAdi);
-        updateElement("footer-copyright-name", siteAdi);
     }
 
     // Telefon
