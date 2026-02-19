@@ -2220,13 +2220,20 @@ button.faq-question {
   padding-top: 2rem;
   color: var(--text-muted);
   font-size: 0.85rem;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
+  text-align: left;
 }
-@media (min-width: 768px) { .footer-bottom { flex-direction: row; justify-content: space-between; } }
+.footer-bottom p {
+  margin: 0;
+  white-space: nowrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.footer-bottom .footer-link {
+  display: inline;
+}
+@media (max-width: 767px) {
+  .footer-bottom { font-size: 0.75rem; }
+}
 
 /* ================= EXTRAS ================= */
 .whatsapp-float {
@@ -2235,9 +2242,10 @@ button.faq-question {
   right: 2rem;
   background: #25D366;
   color: white;
-  width: 3.5rem;
   height: 3.5rem;
-  border-radius: 50%;
+  min-width: 3.5rem; /* Daire şeklini başlangıçta korumak için eklendi */
+  max-width: 3.5rem; /* width yerine max-width kullanıyoruz, animasyon için şart */
+  border-radius: 2rem; /* %50 yerine 2rem, uzayınca hap (pill) şeklini almasını sağlar */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2246,17 +2254,28 @@ button.faq-question {
   overflow: hidden;
   transition: all 0.3s ease;
   box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+  box-sizing: border-box; /* Padding eklendiğinde yapının bozulmasını/taşmasını engeller */
 }
+
 .whatsapp-float:hover {
-  width: auto;
+  max-width: 15rem; /* Metnin sığacağı kadar geniş bir değer verin (12-15rem genelde yeterlidir) */
   padding: 0 1.5rem;
-  border-radius: 2rem;
   transform: translateY(-5px);
   box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6);
 }
-.whatsapp-text { font-size: 0; opacity: 0; transition: all 0.3s; white-space: nowrap; }
-.whatsapp-float:hover .whatsapp-text { font-size: 1rem; opacity: 1; margin-left: 0.5rem; }
 
+.whatsapp-text { 
+  font-size: 0; 
+  opacity: 0; 
+  transition: all 0.3s ease; 
+  white-space: nowrap; 
+}
+
+.whatsapp-float:hover .whatsapp-text { 
+  font-size: 1rem; 
+  opacity: 1; 
+  margin-left: 0.5rem; 
+}
 
 /* Utilities */
 .text-blue-600 { color: var(--primary); }
