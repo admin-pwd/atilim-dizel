@@ -937,7 +937,7 @@ a.logo {
   gap: 1.5rem;
 }
 @media (min-width: 640px) { .services-grid--home { grid-template-columns: repeat(2, 1fr); } }
-@media (min-width: 1024px) { .services-grid--home { grid-template-columns: repeat(4, 1fr); gap: 1.5rem; } }
+@media (min-width: 1024px) { .services-grid--home { grid-template-columns: repeat(3, 1fr); gap: 1.5rem; } }
 .services-cta-wrap.text-center { margin-top: 3rem; }
 .services-cta-wrap .btn { margin-top: 0; }
 /* Hizmet kartı – ana sayfa: tam sayfa görsel, overlay, sağ üst ikon, altta başlık + hover’da açılan açıklama + Detaylar */

@@ -265,6 +265,13 @@ async function loadGeneralInfo(url) {
         btn.setAttribute("rel", "noopener noreferrer");
     });
 
+    // Hero etiket
+    const heroBadgeKeys = ["badge"];
+    const heroBadgeValue = findFirstKey(infoMap, heroBadgeKeys);
+    if (heroBadgeValue) {
+        updateElement("hero-badge", heroBadgeValue);
+    }
+
     // Hero başlık
     const heroTitleKeys = ["hero_title", "hero başlık", "herotitle", "slogan"];
     const heroTitleValue = findFirstKey(infoMap, heroTitleKeys);
