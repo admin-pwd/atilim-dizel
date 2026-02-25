@@ -15,15 +15,15 @@ export default function Footer({ onNavigate }) {
   const workSunday = generalInfo.workHoursSunday || '';
 
   return (
-    <footer className="bg-black text-slate-400 py-12 border-t border-slate-800">
+    <footer className="bg-black text-slate-400 py-12 border-t border-slate-800 pb-28 md:pb-12">
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-4 gap-8 mb-8">
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <Settings className="text-blue-600" size={24} />
+              <Settings className="text-orange-500" size={24} />
               <h2 className="text-xl font-bold text-white">
                 {siteName.split(' ')[0]}
-                <span className="text-blue-600">{siteName.split(' ').slice(1).join(' ') || ''}</span>
+                <span className="text-orange-500">{siteName.split(' ').slice(1).join(' ') || ''}</span>
               </h2>
             </div>
             <p className="text-sm">Modern dizel teknolojileri için güvenilir çözüm ortağınız.</p>
@@ -32,17 +32,17 @@ export default function Footer({ onNavigate }) {
             <h3 className="text-white font-bold mb-4">Hızlı Erişim</h3>
             <ul className="space-y-2 text-sm">
               <li>
-                <button type="button" onClick={() => onNavigate('/')} className="hover:text-blue-500 cursor-pointer">
+                <button type="button" onClick={() => onNavigate('/')} className="hover:text-orange-500 cursor-pointer">
                   Ana Sayfa
                 </button>
               </li>
               <li>
-                <button type="button" onClick={() => onNavigate('/hizmetler')} className="hover:text-blue-500 cursor-pointer">
+                <button type="button" onClick={() => onNavigate('/hizmetler')} className="hover:text-orange-500 cursor-pointer">
                   Hizmetlerimiz
                 </button>
               </li>
               <li>
-                <button type="button" onClick={() => onNavigate('/iletisim')} className="hover:text-blue-500 cursor-pointer">
+                <button type="button" onClick={() => onNavigate('/iletisim')} className="hover:text-orange-500 cursor-pointer">
                   İletişim
                 </button>
               </li>
@@ -71,12 +71,12 @@ export default function Footer({ onNavigate }) {
         </div>
         <div className="border-t border-slate-800 pt-8 flex flex-wrap gap-4 justify-center md:justify-between text-xs text-slate-500">
           {phone && (
-            <a href={phoneHref} className="hover:text-blue-400">
+            <a href={phoneHref} className="hover:text-orange-400">
               {phone}
             </a>
           )}
           {email && (
-            <a href={`mailto:${email}`} className="hover:text-blue-400">
+            <a href={`mailto:${email}`} className="hover:text-orange-400">
               {email}
             </a>
           )}

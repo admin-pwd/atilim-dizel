@@ -21,9 +21,9 @@ export default function Services() {
     <div className="pt-32 pb-20 min-h-screen bg-slate-900">
       <div className="container mx-auto px-4">
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <h2 className="text-blue-500 font-bold tracking-widest uppercase mb-3 text-sm">TÜM HİZMETLERİMİZ</h2>
-          <h3 className="text-4xl font-bold text-white mb-6">Aracınız İçin Profesyonel Çözümler</h3>
-          <p className="text-slate-400">En son teknoloji diyagnostik cihazlar ve test tezgahları ile A'dan Z'ye dizel sistem çözümleri sunuyoruz.</p>
+          <h2 className="text-orange-500 font-bold tracking-widest uppercase mb-3 text-sm">TÜM HİZMETLERİMİZ</h2>
+          <h3 className="text-4xl font-bold text-white mb-6 text-balance">Aracınız İçin Profesyonel Çözümler</h3>
+          <p className="text-slate-400">{"En son teknoloji diyagnostik cihazlar ve test tezgahları ile A'dan Z'ye dizel sistem çözümleri sunuyoruz."}</p>
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {list.map((svc, i) => {
@@ -32,7 +32,7 @@ export default function Services() {
             return (
               <div
                 key={svc.title}
-                className="bg-slate-800 rounded-2xl border border-slate-700 overflow-hidden hover:border-blue-500 transition-all hover:-translate-y-1 group"
+                className="bg-slate-800 rounded-2xl border border-slate-700 overflow-hidden hover:border-orange-500 transition-all hover:-translate-y-1 group"
               >
                 <div className="aspect-video w-full overflow-hidden bg-slate-700">
                   <img
@@ -42,15 +42,15 @@ export default function Services() {
                   />
                 </div>
                 <div className="p-8">
-                  <div className="w-14 h-14 bg-slate-700 rounded-xl flex items-center justify-center mb-4 group-hover:bg-blue-600 transition-colors border border-white/5">
-                    <Icon className="text-blue-500 group-hover:text-white transition-colors" size={32} />
+                  <div className="w-14 h-14 bg-slate-700 rounded-xl flex items-center justify-center mb-4 group-hover:bg-orange-500 transition-colors border border-white/5">
+                    <Icon className="text-orange-500 group-hover:text-white transition-colors" size={32} />
                   </div>
                   <h3 className="text-xl font-bold text-white mb-3">{svc.title}</h3>
                   <p className="text-slate-400 mb-6">{svc.desc}</p>
                   <button
                     type="button"
                     onClick={() => navigate('/iletisim')}
-                    className="text-blue-500/80 font-bold flex items-center gap-2 hover:gap-3 transition-all text-sm group-hover:text-blue-400"
+                    className="text-orange-500/80 font-bold flex items-center gap-2 hover:gap-3 transition-all text-sm group-hover:text-orange-400"
                   >
                     Detaylı Bilgi <ChevronRight size={16} />
                   </button>

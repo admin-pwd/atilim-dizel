@@ -3,6 +3,7 @@ import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import FloatingActionButtons from './components/FloatingActionButtons';
+import MobileStickyBar from './components/MobileStickyBar';
 import Home from './pages/Home';
 import Services from './pages/Services';
 import About from './pages/About';
@@ -26,7 +27,7 @@ export default function App() {
   }, [location.pathname]);
 
   return (
-    <div className="min-h-screen bg-slate-900 font-sans selection:bg-blue-600 selection:text-white">
+    <div className="min-h-screen bg-slate-900 font-sans selection:bg-orange-500 selection:text-white">
       <Header
         activePath={location.pathname}
         onNavigate={navigateTo}
@@ -43,6 +44,7 @@ export default function App() {
       </main>
       <Footer onNavigate={navigateTo} />
       <FloatingActionButtons />
+      <MobileStickyBar />
     </div>
   );
 }

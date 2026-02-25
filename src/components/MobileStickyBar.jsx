@@ -2,33 +2,33 @@ import React from 'react';
 import { MessageCircle, Phone } from 'lucide-react';
 import { useData } from '../context/DataContext';
 
-export default function FloatingActionButtons() {
+export default function MobileStickyBar() {
   const { generalInfo } = useData();
+  const phoneHref = generalInfo.phoneHref || 'tel:';
   const whatsapp = generalInfo.whatsapp || '';
   const whatsappMsg = generalInfo.whatsappMsg || 'Merhaba, randevu almak istiyorum.';
-  const phoneHref = generalInfo.phoneHref || 'tel:';
   const cleanWhatsapp = whatsapp ? String(whatsapp).replace(/\s+/g, '').replace(/[()\-]/g, '') : '';
   const whatsappUrl = cleanWhatsapp
     ? `https://wa.me/${cleanWhatsapp}?text=${encodeURIComponent(whatsappMsg)}`
     : 'https://wa.me/905321234567';
 
   return (
-    <div className="fixed bottom-6 right-6 z-40 flex flex-col gap-4">
+    <div className="fixed bottom-0 w-full flex md:hidden z-50">
       <a
         href={whatsappUrl}
         target="_blank"
         rel="noreferrer"
-        className="w-14 h-14 bg-green-500 rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform cursor-pointer text-white"
-        aria-label="WhatsApp"
+        className="flex-1 bg-green-500 text-white font-bold text-base flex items-center justify-center gap-2 py-4 active:bg-green-600 transition-colors"
       >
-        <MessageCircle size={28} />
+        <MessageCircle size={22} />
+        <span>WhatsApp</span>
       </a>
       <a
         href={phoneHref}
-        className="w-14 h-14 bg-blue-600 rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform cursor-pointer text-white md:hidden"
-        aria-label="Ara"
+        className="flex-1 bg-orange-500 text-white font-bold text-base flex items-center justify-center gap-2 py-4 active:bg-orange-600 transition-colors"
       >
-        <Phone size={28} />
+        <Phone size={22} />
+        <span>Hemen Ara</span>
       </a>
     </div>
   );
